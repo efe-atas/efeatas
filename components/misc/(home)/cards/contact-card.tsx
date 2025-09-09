@@ -1,6 +1,7 @@
-// TODO: Add rate limiting and handle errors.
+// Form with rate limiting and error handling implemented.
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -32,37 +33,44 @@ const formSchema = z.object({
 });
 
 const ContactCard = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    // https://react.dev/reference/react-dom/components/input#im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled
-    // the library should handle this by themselves bruh
-    // i really hate how react got around being huge piece of mess, needs fix.
     defaultValues: {
       email: "",
       message: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast("Message sent!", {
-      description: "Thanks, I'll get back to you ASAP.",
-      action: {
-        label: "Undo",
-        // TODO: Undo Functionality + x3 for :)
-        onClick: () => console.log("implement undo function"),
-      },
-    });
-    const { email, message } = values;
-    submitForm(email, message);
-    form.reset(
-      {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const { email, message } = values;
+      await submitForm(email, message);
+
+      toast("Message sent!", {
+        description: "Thanks, I'll get back to you ASAP.",
+        action: {
+          label: "Undo",
+          onClick: () => console.log("implement undo function"),
+        },
+      });
+
+      form.reset({
         email: "",
         message: "",
-      },
-      {
-        keepValues: false,
-      },
-    );
+      });
+    } catch (error) {
+      toast.error("Failed to send message", {
+        description: "Please try again later or contact me directly.",
+      });
+      console.error("Form submission failed:", error);
+    } finally {
+      setTimeout(() => setIsSubmitting(false), 5000); // 5 second cooldown
+    }
   }
 
   return (
@@ -77,7 +85,7 @@ const ContactCard = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="hi@vimfn.in" {...field} />
+                    <Input placeholder="hi@efeatas.dev" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -102,8 +110,8 @@ const ContactCard = () => {
               />
             </div>
             <div className="mt-3 flex justify-end">
-              <Button type="submit" className="w-36 h-8">
-                Send
+              <Button type="submit" className="w-36 h-8" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send"}
               </Button>
             </div>
           </form>

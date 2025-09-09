@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { booksData } from "./books";
 
 export const metadata: Metadata = {
-  title: "vimfn // books",
+  title: "efeatas // books",
   description:
     "Find some of my favorite book collections and the one currently reading.",
 };

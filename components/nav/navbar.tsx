@@ -11,7 +11,7 @@ type navItems = {
 }[];
 
 const navItems: navItems = [
-  { name: "~", href: "/" },
+  { name: "efeatas", href: "/" },
   { name: "work", href: "/work" },
   { name: "notes", href: "/notes" },
 ];

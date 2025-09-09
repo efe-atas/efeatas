@@ -53,7 +53,7 @@ export const getGHStats = cache(
           }
         }
       `,
-      { login: "vimfn" },
+  { login: "efe-atas" },
     );
     return {
       issues: user.closedIssues.totalCount + user.openIssues.totalCount,

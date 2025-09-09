@@ -1,4 +1,4 @@
-import { getBlogPosts } from "@/lib/blog";
+import { getAllPosts } from "@/lib/blog";
 import { extractDate } from "@/lib/utils";
 import { Rss } from "lucide-react";
 import type { Metadata } from "next";
@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: "notes I guess.",
 };
 
-const notesPage = () => {
-  const allBlogs = getBlogPosts();
+const notesPage = async () => {
+  const allBlogs = await getAllPosts();
 
   return (
     <section>
@@ -39,9 +39,9 @@ const notesPage = () => {
 
         {allBlogs
           .filter(({ metadata }) => {
-            return !metadata.draft;
+            return (metadata as any).draft !== true;
           })
-          .toSorted((a, b) => {
+          .sort((a, b) => {
             if (
               new Date(a.metadata.publishedAt) >
               new Date(b.metadata.publishedAt)
@@ -51,10 +51,9 @@ const notesPage = () => {
             return 1;
           })
           .map((post, index) => (
-            <>
+            <div key={post.slug}>
               {!post.metadata.externalLink ? (
                 <Link
-                  key={post.slug}
                   className="w-full cursor-pointer"
                   aria-label={post.metadata.title}
                   href={`/notes/${post.slug}`}
@@ -79,10 +78,11 @@ const notesPage = () => {
                 </Link>
               ) : (
                 <a
-                  key={post.slug}
                   className="w-full cursor-pointer"
                   aria-label={post.metadata.title}
                   href={post.metadata.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <div className="w-full  py-1 transform hover:scale-[1.01] transition-all">
                     <div className="flex flex-col sm:flex-row justify-between sm:items-center">
@@ -93,6 +93,9 @@ const notesPage = () => {
                         <h4 className="w-full focusable link">
                           {post.metadata.title}
                         </h4>
+                        {post.metadata.isExternal && (
+                          <span className="ml-2 text-xs text-text/50">(External)</span>
+                        )}
                       </div>
                       <div className="flex items-center mt-2 sm:mt-0  justify-between">
                         <p className="text-xs text-left sm:text-right md:mb-0 mr-2 ml-8 sm:ml-0 text-text/70">
@@ -103,7 +106,7 @@ const notesPage = () => {
                   </div>
                 </a>
               )}
-            </>
+            </div>
           ))}
       </div>
     </section>

@@ -6,34 +6,19 @@ export const Intro = () => {
     <section className="mt-8 text-zinc-600 dark:text-zinc-400">
       <div className="space-y-5">
         <p>
-          hi, i'm arunava (a.k.a
-          <a
-            className="link text-black dark:text-white/95 ml-1 underline-offset-auto underline"
-            href="https://www.vimfn.in/alias"
-          >
-            vimfn
-          </a>{" "}
-          on the internet) currently a cs undergrad at [redacted], my interests
-          include compilers, computer networks, and ctfs.
+          hi, i'm efeatas
+           currently a cs undergrad at TED University, my interests
+          include neural networks, computer vision, and building apps with react.
         </p>
         <p>
-          beyond my studies, i enjoy my time playing chess, jamming to music,
+          beyond my studies, i enjoy my time playing chess, creating mobile apps with vibe coding,
           modding factorio or just tinkering with stuff to understand how they
           work.
         </p>
-        <p>
-          ps i love simplicity and a great admirer of unix philosophy,
-          minimalism and hacker ethics.
+        <p className="italic">
+          "Everyone dies alone. But if you mean something to someone, if you help someone, or love someone. If even a single person remembers you. Then maybe, you never really die at all."
         </p>
-        <br />
-        🚧 note: this site isn't ready yet, you should better be visting
-        <a
-          className="link text-black dark:text-white/95 ml-1 underline-offset-auto underline"
-          href="https://www.vimfn.in"
-        >
-          vimfn.in
-        </a> for any info.
-        <br />
+
         <div>
           <Link
             href="/notes"
@@ -65,19 +50,10 @@ export const Intro = () => {
         ></path>
       </svg>
       <div>
-        feel free to reach me out at
-        <a
-          className="link text-black dark:text-white/95 mx-1 underline underline-offset-auto"
-          href="http://x.com/vimfnx"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          x.com
-        </a>
-        or drop an
+        feel free to reach me out drop an
         <a
           className="link text-black dark:text-white/95 ml-1 underline-offset-auto underline"
-          href="mailto:hi@vimfn.in"
+          href="mailto:iefeatas@gmail.com"
         >
           email
         </a>

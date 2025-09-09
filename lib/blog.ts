@@ -8,6 +8,7 @@ type Metadata = {
   image?: string;
   externalLink?: string;
   draft?: boolean;
+  isExternal?: boolean;
 };
 
 function parseFrontmatter(fileContent: string) {
@@ -61,4 +62,33 @@ function getMDXData(dir: string) {
 
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), "content"));
+}
+
+export async function getAllPosts() {
+  const localPosts = getBlogPosts();
+  const rssPosts = await getRSSPosts();
+  return [...localPosts, ...rssPosts];
+}
+
+async function getRSSPosts() {
+  try {
+    const Parser = (await import('rss-parser')).default;
+    const parser = new Parser();
+    const feed = await parser.parseURL('https://efe-atas.github.io/feed.xml');
+    return feed.items.map((item) => ({
+      metadata: {
+        title: item.title || '',
+        publishedAt: item.pubDate || '',
+        summary: item.summary || item.contentSnippet || '',
+        externalLink: item.link,
+        isExternal: true,
+      },
+      slug: item.link?.split('/').pop() || '',
+      tweetIds: [],
+      content: item.content || '',
+    }));
+  } catch (error) {
+    console.error('Error fetching RSS posts:', error);
+    return [];
+  }
 }

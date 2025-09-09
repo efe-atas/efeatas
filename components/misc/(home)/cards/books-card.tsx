@@ -16,8 +16,8 @@ export const BooksCard = () => {
         />
         <div className="px-4 py-2 text-white text-md font-[500]">
           <Quote className="rotate-180" />
-          <p className="text-xl ">I lived in book than anywhere else.</p>
-          <span className="text-white/85 flex justify-end">― Neil Gaiman</span>
+          <p className="text-l "> Life swings like a pendulum backward and forward between pain and boredom.</p>
+          <span className="text-white/85 flex justify-end">― Arthur Schopenhauer </span>
         </div>
       </div>
     </Link>

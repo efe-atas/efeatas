@@ -6,10 +6,10 @@ const Home = () => {
   return (
     <section className="md:mt-8 lg:mt-10 pt-8 pb-16">
       <h1 className="mt-0 mb-1 text-xl font-medium dark:text-white">
-        arunava
+        efeatas
       </h1>
       <div className="max-w-[58ch] text-zinc-600 dark:text-zinc-400">
-        software engineer, in/remote
+        senior CS major
       </div>
       <Intro />
       <GridCards />

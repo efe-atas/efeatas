@@ -14,7 +14,7 @@ export const LocateMe = () => {
           priority
         />
         <p className="absolute top-1/2 left-16 rounded-full bg-white/10 pl-2.5 pr-3 font-bold text-white/95 backdrop-blur-md">
-          📍 Kolkata
+          📍 Turkey
         </p>
       </div>
     </div>

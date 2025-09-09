@@ -15,10 +15,9 @@ import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 
-import anime from "@/public/images/(nav)/anime.webp";
+
 import books from "@/public/images/(nav)/books.webp";
 import faqs from "@/public/images/(nav)/faqs.webp";
-import music from "@/public/images/(nav)/music.webp";
 import uses from "@/public/images/(nav)/uses.webp";
 import work from "@/public/images/(nav)/work.webp";
 import NavDrawer from "./nav-drawer";
@@ -58,31 +57,6 @@ export function NavMenu() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="text-white grid w-[150px] gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[350px]">
-              <ListItem
-                title="music"
-                href="/music"
-                className="relative z-10 hover:text-white hover:opacity-80"
-              >
-                <Image
-                  className="absolute object-cover inset-0 w-full h-full -z-40 rounded-md  brightness-50"
-                  src={music}
-                  alt="music"
-                  placeholder="blur"
-                />
-              </ListItem>
-
-              <ListItem
-                title="anime"
-                href="/anime"
-                className="relative z-10 hover:text-white hover:opacity-80"
-              >
-                <Image
-                  className="absolute object-cover inset-0 w-full h-full -z-40 rounded-md  brightness-50"
-                  src={anime}
-                  alt="anime"
-                  placeholder="blur"
-                />
-              </ListItem>
 
               <ListItem
                 title="books"

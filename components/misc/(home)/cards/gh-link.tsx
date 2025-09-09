@@ -1,39 +1,26 @@
-import ghCat from "@/public/images/(home)/0002.jpg";
 import { Github } from "lucide-react";
-import Image from "next/image";
 
 export const GHLink = () => {
   return (
     <a
-      className="relative h-full w-full group flex flex-col justify-between overflow-hidden rounded-2xl text-white transform-gpu transition-all duration-500 will-change-[outline,_transform] group-hover:scale-95 active:scale-100 hover:scale-95"
-      href="http://github.com/vimfn"
+      className="w-full h-36 bg-black rounded-lg shadow-sm border border-gray-800 flex flex-col justify-center p-6 hover:shadow-md transition-shadow duration-300"
+      href="http://github.com/efe-atas"
       target="_blank"
       rel="noreferrer"
     >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20"
-      >
-        <Image
-          src={ghCat}
-          alt="cat img"
-          priority={true}
-          className="rounded-lg absolute inset-0 h-full w-full object-cover object-center brightness-[0.7] "
-        />
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-neutral-900/20 dark:bg-neutral-900/50"
-        ></span>
-      </span>
-      <span aria-hidden="true" className="px-6 pt-6">
-        <span className="flex justify-between">
-          <Github />
-        </span>
-      </span>
-      <span className="space-y-0.5 px-6 pb-6">
-        <span className="block font-semibold">GitHub</span>
-        <span className="block text-sm">My experiments (aka projects)</span>
-      </span>
+      <div className="flex items-center mb-3">
+        <Github className="w-5 h-5 text-white mr-2" />
+        <span className="text-xs text-gray-400 uppercase tracking-wider">GitHub</span>
+      </div>
+
+      <div className="flex-1 flex flex-col justify-center">
+        <h3 className="text-lg font-light text-white leading-tight mb-1">
+          My Experiments
+        </h3>
+        <p className="text-xs text-gray-500">
+          Code & Projects
+        </p>
+      </div>
     </a>
   );
 };

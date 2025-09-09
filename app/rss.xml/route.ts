@@ -7,10 +7,10 @@ export const GET = () => {
   const SITE_URL =
     env.NODE_ENV === "production"
       ? "http://localhost:3000"
-      : "https://beta.vimfn.in";
+      : "https://efeatas.dev";
 
   const feed = new RSS({
-    title: "notes // vimfn",
+    title: "notes // efeatas",
     description: "Read my articles about tech, life and anything in between.",
     site_url: `${SITE_URL}`,
     feed_url: `${SITE_URL}/rss.xml`,
@@ -26,7 +26,7 @@ export const GET = () => {
       url: `${SITE_URL}/wiriting/${post.slug}`,
       date: post.metadata.publishedAt,
       description: post.content,
-      author: "arunava",
+      author: "efeatas",
     });
   }
 

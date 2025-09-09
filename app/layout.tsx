@@ -4,7 +4,7 @@ import "@/app/globals.css";
 import { Footer } from "@/components/layouts/footer";
 import Header from "@/components/layouts/header";
 import { ThemeProvider } from "@/components/misc/(theme)/theme-provider";
-import { Analytics } from "@/components/misc/analytics";
+import Analytics from "@/components/misc/analytics";
 import { Toaster } from "@/components/ui/sonner";
 import gradientImg from "@/public/images/gradient.webp";
 import Image from "next/image";
@@ -12,10 +12,10 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 const info = {
-  name: "arunava",
-  twitter: "@vimfnx",
-  description: "19yo Software Engineer, India",
-  url: "https://vimfn.in",
+  name: "efeatas",
+  twitter: "@iefeatas",
+  description: "24yo Software Engineer Student, Turkey",
+  url: "https://efeatas.dev",
   image: "/meta/meta.png",
 };
 

@@ -5,7 +5,7 @@ export default function robots() {
         userAgent: "*",
       },
     ],
-    sitemap: "https://beta.vimfn.in/sitemap.xml",
-    host: "https://beta.vimfn.in",
+    sitemap: "https://efeatas.dev/sitemap.xml",
+    host: "https://efeatas.dev",
   };
 }

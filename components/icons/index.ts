@@ -20,8 +20,8 @@ export * from "./cpp";
 export * from "./graphql";
 export * from "./golang";
 export * from "./godot";
-export * from "./music";
-export * from "./lastfm";
 export * from "./vscode";
-export * from "./discord";
 export * from "./twitter";
+export * from "./ai";
+
+export { default as FlutterIcon } from "./flutter";

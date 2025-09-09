@@ -2,7 +2,7 @@ import { UsesTabs } from "@/components/misc/(uses)/uses-tab";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
-  title: "vimfn // uses",
+  title: "efeatas // uses",
   description: "A list of software and hardware that I use.",
 };
 
