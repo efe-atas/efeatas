@@ -1,4 +1,10 @@
-import type { Anime } from "@/app/(more)/anime/anime";
+interface AnimeCardProps {
+  title: string;
+  href: string;
+  imgName: string;
+  altTitle?: string;
+  starred?: boolean;
+}
 
 export const AnimeCard = ({
   title,
@@ -6,7 +12,7 @@ export const AnimeCard = ({
   imgName,
   altTitle,
   starred,
-}: Anime) => {
+}: AnimeCardProps) => {
   const altTitleElement = altTitle ? (
     <div className="text-xs text-gray-900 dark:text-gray-200 italic font-semibold opacity-75">
       ({altTitle})
