@@ -11,9 +11,7 @@ export const Intro = () => {
           include neural networks, computer vision, and building apps with react.
         </p>
         <p>
-          beyond my studies, i enjoy my time playing chess, creating mobile apps with vibe coding,
-          modding factorio or just tinkering with stuff to understand how they
-          work.
+          beyond my studies, i enjoy my time playing chess, creating mobile apps with vibe coding
         </p>
         <p className="italic">
           "Everyone dies alone. But if you mean something to someone, if you help someone, or love someone. If even a single person remembers you. Then maybe, you never really die at all."

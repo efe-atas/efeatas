@@ -4,8 +4,12 @@ import { Colophon } from "@/components/misc/(uses)/colophon";
 import { DesignAndColors } from "@/components/misc/(uses)/design-colors";
 import { MyLogo } from "@/components/misc/(uses)/my-logo";
 import { Typography } from "@/components/misc/(uses)/typography";
+import { DashboardTab } from "@/components/misc/(uses)/dashboard-tab";
 
 import bspwmImg from "@/public/images/(uses)/bspwm.webp";
+
+// Re-export DashboardTab
+export { DashboardTab };
 
 export const AllTabs = () => {
   return (
@@ -19,6 +23,7 @@ export const AllTabs = () => {
         className={"h-full object-top py-5"}
         priority
       />
+      <DashboardTab />
       <EverydayTab />
       <SoftwareTab />
       <BrowserTab />

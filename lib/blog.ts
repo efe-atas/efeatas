@@ -11,6 +11,16 @@ type Metadata = {
   isExternal?: boolean;
 };
 
+function processLiquidIncludes(content: string): string {
+  // Replace Liquid include statements with HTML img tags
+  const liquidIncludeRegex = /\{\%\s*include\s+figure\.liquid\s+path="([^"]+)"\s+title="([^"]+)"\s+class="([^"]+)"\s*\%\}/g;
+  return content.replace(liquidIncludeRegex, (match, path, title, className) => {
+    // Convert relative paths to absolute paths for Next.js
+    const absolutePath = path.startsWith('/') ? path : `/${path}`;
+    return `<img src="${absolutePath}" alt="${title}" class="${className}" />`;
+  });
+}
+
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   const match = frontmatterRegex.exec(fileContent);
@@ -28,67 +38,38 @@ function parseFrontmatter(fileContent: string) {
   });
 
   // console.log(metadata)
-  return { metadata: metadata as Metadata, content };
+  return { metadata: metadata as Metadata, content: processLiquidIncludes(content) };
 }
 
-function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
+function getMDFiles(dir: string) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".md");
 }
 
-function readMDXFile(filePath: string) {
+function readMDFile(filePath: string) {
   const rawContent = fs.readFileSync(filePath, "utf-8");
   return parseFrontmatter(rawContent);
 }
 
-function extractTweetIds(content: string) {
-  const tweetMatches = content.match(/<StaticTweet\sid="[0-9]+"\s\/>/g);
-  return tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)![0]) || [];
-}
-
-function getMDXData(dir: string) {
-  const mdxFiles = getMDXFiles(dir);
-  return mdxFiles.map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file));
+function getMDData(dir: string) {
+  const mdFiles = getMDFiles(dir);
+  return mdFiles.map((file) => {
+    const { metadata, content } = readMDFile(path.join(dir, file));
     const slug = path.basename(file, path.extname(file));
-    const tweetIds = extractTweetIds(content);
     return {
       metadata,
       slug,
-      tweetIds,
+      tweetIds: [],
       content,
     };
   });
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "content"));
+  return getMDData(path.join(process.cwd(), "content"));
 }
 
-export async function getAllPosts() {
-  const localPosts = getBlogPosts();
-  const rssPosts = await getRSSPosts();
-  return [...localPosts, ...rssPosts];
+export function getAllPosts() {
+  return getBlogPosts();
 }
 
-async function getRSSPosts() {
-  try {
-    const Parser = (await import('rss-parser')).default;
-    const parser = new Parser();
-    const feed = await parser.parseURL('https://efe-atas.github.io/feed.xml');
-    return feed.items.map((item) => ({
-      metadata: {
-        title: item.title || '',
-        publishedAt: item.pubDate || '',
-        summary: item.summary || item.contentSnippet || '',
-        externalLink: item.link,
-        isExternal: true,
-      },
-      slug: item.link?.split('/').pop() || '',
-      tweetIds: [],
-      content: item.content || '',
-    }));
-  } catch (error) {
-    console.error('Error fetching RSS posts:', error);
-    return [];
-  }
-}
+

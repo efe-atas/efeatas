@@ -4,6 +4,7 @@ import {
   AllTabs,
   BrowserTab,
   CodingTab,
+  DashboardTab,
   EverydayTab,
   SoftwareTab,
   WebsiteTab,
@@ -14,6 +15,7 @@ import { useEffect, useState } from "react";
 
 type TabKey =
   | "all"
+  | "dashboard"
   | "everyday"
   | "software"
   | "browser"
@@ -22,15 +24,17 @@ type TabKey =
 
 const tabs: Array<{ id: TabKey; title: string }> = [
   { id: "all", title: "All" },
+  { id: "dashboard", title: "Dashboard" },
   { id: "everyday", title: "Everyday" },
   { id: "software", title: "Software" },
   { id: "browser", title: "Browser" },
   { id: "coding", title: "Coding" },
   { id: "website", title: "Website" },
-] as const;
+];
 
 const tabContent: Record<TabKey, React.ReactNode> = {
   all: <AllTabs />,
+  dashboard: <DashboardTab />,
   everyday: <EverydayTab />,
   software: <SoftwareTab />,
   browser: <BrowserTab />,

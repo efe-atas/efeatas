@@ -5,12 +5,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "vimfn // notes",
+  title: "efeatas // notes",
   description: "notes I guess.",
 };
 
 const notesPage = async () => {
-  const allBlogs = await getAllPosts();
+  const allBlogs = getAllPosts();
 
   return (
     <section>
