@@ -15,9 +15,8 @@ The long and the short of it believe in yourself, do not affect from outside wor
 
 (I DO NOT ACT LIKE A TEACHER. I am also suffer from same issues as you like. I also recommend all of them to myself)
 
+<div style="text-align: center; margin: 2rem 0;">
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-2 mt-1 mt-md-0">
-        {% include figure.liquid path="images/(blog)/believe.png" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
+![Believe in yourself](/images/(blog)/believe.png)
+
 </div>

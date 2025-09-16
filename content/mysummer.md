@@ -44,7 +44,11 @@ My friend called me and said let’s go to Germany and I said yes, so we bought 
 Maybe I forgot to mention something about my travel but I think this is enough for now.  
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="/images/(blog)/IMG_7521.jpeg" title="Nuremberg,Germany" class="img-fluid rounded z-depth-1" width="600" height="400" %}
-    </div>
+  <div class="col-sm-6 mt-3 mt-md-0"><!-- 8 → 6 -->
+    {% include figure.liquid
+       path="images/(blog)/IMG_7521.jpeg"
+       title="example image"
+       class="img-fluid w-75 rounded z-depth-100" %}  
+  </div>
 </div>
+

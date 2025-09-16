@@ -54,37 +54,44 @@ const components = {
       {children}
     </h6>
   ),
-  img: ({ src, alt, className, width, height, ...props }: { src?: string; alt?: string; className?: string; width?: string | number; height?: string | number; [key: string]: any }) => {
+  img: ({ src, alt, className, style, ...props }: { 
+    src?: string; 
+    alt?: string; 
+    className?: string; 
+    style?: React.CSSProperties;
+    [key: string]: any;
+  }) => {
     if (!src) return null;
     // For Next.js Image component, src must be absolute or start with /
     const imageSrc = src.startsWith('http') ? src : (src.startsWith('/') ? src : `/${src}`);
     
-    // If width and height are provided, use them
-    if (width && height) {
-      return (
-        <Image 
-          src={imageSrc} 
-          alt={alt || ""} 
-          width={typeof width === 'string' ? parseInt(width) : width}
-          height={typeof height === 'string' ? parseInt(height) : height}
-          className={className}
-        />
-      );
-    }
+    // Extract width and height from style or props if available
+    const width = props.width || (style?.maxWidth ? parseInt(style.maxWidth.toString()) : 800);
+    const height = props.height || 600;
     
-    // Default responsive behavior
     return (
-      <div className="relative w-full max-w-md mx-auto my-4">
+      <div style={style} className={className}>
         <Image 
           src={imageSrc} 
           alt={alt || ""} 
-          fill
-          className={`object-cover rounded-lg ${className || ''}`}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          width={width} 
+          height={height} 
+          style={{ maxWidth: '100%', height: 'auto' }}
+          {...props}
         />
       </div>
     );
   },
+  div: ({ children, style, className, ...props }: { 
+    children: React.ReactNode; 
+    style?: React.CSSProperties; 
+    className?: string;
+    [key: string]: any;
+  }) => (
+    <div style={style} className={className} {...props}>
+      {children}
+    </div>
+  ),
   a: ({ href, children }: { href?: string; children: React.ReactNode }) => {
     if (!href) return <a>{children}</a>;
     if (href.startsWith("/")) {
