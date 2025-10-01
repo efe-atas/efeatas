@@ -13,11 +13,35 @@ type Metadata = {
 
 function processLiquidIncludes(content: string): string {
   // Replace Liquid include statements with HTML img tags
-  const liquidIncludeRegex = /\{\%\s*include\s+figure\.liquid\s+path="([^"]+)"\s+title="([^"]+)"\s+class="([^"]+)"\s*\%\}/g;
-  return content.replace(liquidIncludeRegex, (match, path, title, className) => {
+  // More flexible regex to capture all attributes
+  const liquidIncludeRegex = /\{\%\s*include\s+figure\.liquid\s+([^\%]+)\%\}/g;
+  
+  return content.replace(liquidIncludeRegex, (match, attributes) => {
+    // Parse attributes
+    const pathMatch = attributes.match(/path="([^"]+)"/);
+    const titleMatch = attributes.match(/title="([^"]+)"/);
+    const classMatch = attributes.match(/class="([^"]+)"/);
+    const widthMatch = attributes.match(/width="([^"]+)"/);
+    const heightMatch = attributes.match(/height="([^"]+)"/);
+    
+    if (!pathMatch) return match; // If no path, return original
+    
+    const imagePath = pathMatch[1];
     // Convert relative paths to absolute paths for Next.js
-    const absolutePath = path.startsWith('/') ? path : `/${path}`;
-    return `<img src="${absolutePath}" alt="${title}" class="${className}" />`;
+    const absolutePath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+    const title = titleMatch ? titleMatch[1] : '';
+    const className = classMatch ? classMatch[1] : '';
+    const width = widthMatch ? widthMatch[1] : '';
+    const height = heightMatch ? heightMatch[1] : '';
+    
+    // Build img tag with available attributes
+    let imgTag = `<img src="${absolutePath}" alt="${title}"`;
+    if (className) imgTag += ` class="${className}"`;
+    if (width) imgTag += ` width="${width}"`;
+    if (height) imgTag += ` height="${height}"`;
+    imgTag += ` />`;
+    
+    return imgTag;
   });
 }
 

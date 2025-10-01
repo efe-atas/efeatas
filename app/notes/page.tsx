@@ -26,7 +26,7 @@ const notesPage = async () => {
             </a>{" "}
             or follow on
             <a
-              href="https://x.com/vimfnx"
+              href="https://x.com/iefeatas"
               target="_blank"
               className="link mx-1"
               rel="noreferrer"

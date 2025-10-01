@@ -59,16 +59,22 @@ const components = {
     // For Next.js Image component, src must be absolute or start with /
     const imageSrc = src.startsWith('http') ? src : (src.startsWith('/') ? src : `/${src}`);
     
-    // If width and height are provided, use them
+    // If width and height are provided, use them with max constraints
     if (width && height) {
+      const w = typeof width === 'string' ? parseInt(width) : width;
+      const h = typeof height === 'string' ? parseInt(height) : height;
+      
       return (
-        <Image 
-          src={imageSrc} 
-          alt={alt || ""} 
-          width={typeof width === 'string' ? parseInt(width) : width}
-          height={typeof height === 'string' ? parseInt(height) : height}
-          className={className}
-        />
+        <div className="my-6 flex justify-center">
+          <Image 
+            src={imageSrc} 
+            alt={alt || ""} 
+            width={w}
+            height={h}
+            className={`max-w-full h-auto rounded-lg ${className || ''}`}
+            style={{ maxWidth: '100%', height: 'auto' }}
+          />
+        </div>
       );
     }
     

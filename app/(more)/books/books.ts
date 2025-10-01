@@ -1,114 +1,62 @@
-export interface books {
-  title: string;
-  author: string;
-  year: number;
-  type: "audiobook" | "book";
-  poster: string;
-  url: string;
-  readingNow?: boolean;
-  startDate?: string;
+export interface Quote {
+  quote: string;
+  author?: string;
+  source?: string;
+  url?: string;
 }
 
-export const booksData: books[] = [
+export const quotesData: Quote[] = [
   {
-    title: "A Brief History of Time",
-    author: "Stephen Hawking",
-    year: 1998,
-    type: "audiobook",
-    poster:
-      "https://assets.literal.club/4/ckiuwi808258410zk5mcgpjult.jpg?size=600",
-    url: "https://literal.club/book/a-brief-history-of-time-rh9hz",
-    readingNow: true,
-    startDate: "2023-12-26",
+    quote: "Ein Richter, der nicht strafen kann, gesellt sich endlich zum Verbrecher.",
+    author: "Goethe",
+    source: "FAUST",
   },
   {
-    title: "1984",
-    author: "George Orwell",
-    year: 1994,
-    type: "book",
-    poster:
-      "https://assets.literal.club/2/cks96wdkv16083271k980gtmkfvs.jpg?size=600",
-    url: "https://literal.club/book/bin-dokuz-yuz-seksen-dort-ofejk",
+    quote: "ip ipullah sivri kulah",
   },
   {
-    title: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
-    year: 2013,
-    type: "book",
-    poster:
-      "https://assets.literal.club/cover/5/ckhkj670c04430zhwrp3k4n64.jpg?size=600",
-    url: "https://literal.club/book/the-great-gatsby-mlbi0",
+    quote: "ibibillah sivri kulah",
   },
   {
-    title: "The Lord of the Rings",
-    author: "J.R.R. Tolkien",
-    year: 2001,
-    type: "book",
-    poster:
-      "https://assets.literal.club/4/ckiu5jcug456940z612u5mo3xp.jpg?size=600",
-    url: "https://literal.club/book/the-lord-of-the-rings-n69jk",
+    quote: "Bir gün gelir, Açmaz dediğin çiçekler açar. Gitmez dediğin dertler gider. Bitmez dediğin zaman geçer. Hayat öyle bir sır ki; Önce şükür, Sonra sabır, Sonra da inanmak gerek.",
+    author: "Mevlana",
   },
   {
-    title: "The Hound of the Baskervilles",
-    author: "Arthur Conan Doyle",
-    year: 2008,
-    type: "book",
-    poster:
-      "https://assets.literal.club/4/cklgk3oh9147141ifbfwmmbysn.jpg?size=600",
-    url: "https://literal.club/book/the-hound-of-the-baskervilles-jy7gm",
+    quote: "Everyone dies alone. But if you mean something to someone, if you help someone, or love someone. If even a single person remembers you. Then maybe, you never really die at all.",
   },
   {
-    title: "The Da Vinci Code",
-    author: "Dan Brown",
-    year: 2010,
-    type: "book",
-    poster:
-      "https://assets.literal.club/2/ckgexuagf38640y8qcxjon51e.jpg?size=600",
-    url: "https://literal.club/book/the-da-vinci-code-npgdh",
+    quote: "Mazisi olan şehirlere nakliyemiz yoktur",
   },
   {
-    title: "The Alchemist",
-    author: "Paulo Coelho",
-    year: 2014,
-    type: "book",
-    poster:
-      "https://assets.literal.club/4/ckmbkav5b03041kjayv3n4jwh.jpg?size=600",
-    url: "https://literal.club/book/the-alchemist-pjupi",
+    quote: "Kader, harekete geçmeyen kişiye asla yardım etmez..",
   },
   {
-    title: "The Diary of a Young Girl",
-    author: "Anne Frank",
-    year: 1982,
-    type: "book",
-    poster:
-      "https://assets.literal.club/cover/5/ckr1u3exn17ju01crrsb5m7s6.jpg?size=600",
-    url: "https://literal.club/book/anne-frankthe-diary-of-a-young-girl-kqfon",
+    quote: "I read a theory once that the human intellect was like peacock feathers. Just an extravagant display intended to attract a mate. All of art, literature, a bit of Mozart, William Shakespeare, Michelangelo, and the Empire State Building just an elaborate mating ritual. Maybe it doesn't matter that we have accomplished so much for the basest of reasons. But, of course, the peacock can barely fly. It lives in the dirt, peeking insects out of the muck, consoling itself with its great beauty. I have come to think of so much of consciousness as a burden, a weight, and we have spared them that. Anxiety, self-loathing, guilt. The hosts are the ones who are free. Free here under my control.",
+    author: "Dr. Ford",
   },
   {
-    title: "The Shadow of the Wind",
-    author: "Carlos Ruiz Zafón",
-    year: 2004,
-    type: "book",
-    poster:
-      "https://assets.literal.club/4/ckn6dmh66108831i8djowf9emm.jpg?size=600",
-    url: "https://literal.club/book/the-shadow-of-the-wind-idfkm",
+    quote: "Vizyonsuz misyon halisülasyondur.",
   },
   {
-    title: "A Promised Land",
-    author: "Barack Obama",
-    year: 2020,
-    type: "book",
-    poster:
-      "https://assets.literal.club/1/ckiuwfgtn111020zk55i06ub6z.jpg?size=600",
-    url: "https://literal.club/book/a-promised-land-3fyay",
+    quote: "The answer always seemed obvious to me: there is no threshold that makes us greater than the sum of our parts, no inflection point at which we become fully alive. We can't define consciousness because consciousness does not exist. Humans fancy that there's something special about the way we perceive the world, and yet we live as loops as tight and as closed as the hosts, seldom questioning our choices, content for the most part to be told what to do next. No, my friend, you're not missing anything at all.",
   },
   {
-    title: "The Girl with the Dragon Tattoo",
-    author: "Stieg Larsson",
-    year: 2010,
-    type: "book",
-    poster:
-      "https://assets.literal.club/1/ckh0ih3ul88870z6kqd9psdir.jpg?size=600",
-    url: "https://literal.club/book/the-girl-with-the-dragon-tattoo-0h52q",
+    quote: "When the Great Library burned, the first 10,000 years of stories were reduced to ash. But those stories never really perished, they became a new story. The story of the fire itself. Of man's urge to take a thing of beauty and strike the match.",
+  },
+  {
+    quote: "Evolution forged the entirety of sentient life on this planet using only one tool... the mistake",
+  },
+  {
+    quote: "You're probably right Dolores, Michelangelo did tell a lie. You see, it took 500 years for someone to notice something hidden in plain sight. It was a doctor who noticed the shape of the human brain -- message being that the Divine gift does not come from a higher power... but from our own minds.",
+    url: "https://www.youtube.com/watch?v=SxN5ShX896E&t=32s",
+  },
+  {
+    quote: "Savaştan vazgeçen büyük yaşamdan da vazgeçmiş demektir.",
+  },
+  {
+    quote: "Bıyık büküle büküle kaytan, insan s*kile s*kile şeytan olur",
+  },
+  {
+    quote: "Dürtme içimdeki narı, üstümde beyaz gömlek var.",
   },
 ];
